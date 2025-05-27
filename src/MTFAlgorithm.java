@@ -220,9 +220,7 @@ public class MTFAlgorithm {
         return list.toString().replaceAll("[\\[\\]]", "");
     }
 
-    /**
-     * Método principal que ejecuta todos los casos del proyecto
-     */
+    // main
     public static void main(String[] args) {
         System.out.println("PROYECTO 3 - ALGORITMO MTF (MOVE TO FRONT)");
         System.out.println("==========================================\n");
@@ -268,9 +266,5 @@ public class MTFAlgorithm {
             worstCase.add(4 - (i % 5));
         }
         executeIMTF(Arrays.asList(0, 1, 2, 3, 4), worstCase);
-
-        System.out.println("==========================================");
-        System.out.println("PROYECTO COMPLETADO EXITOSAMENTE");
-        System.out.println("==========================================");
     }
 }

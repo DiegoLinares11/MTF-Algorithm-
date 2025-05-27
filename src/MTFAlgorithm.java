@@ -25,7 +25,13 @@ public class MTFAlgorithm {
         }
     }
 
-    // aca termina la clase MTFResult
+    /**
+     * Implementa el algoritmo MTF básico
+     * 
+     * @param initialList Lista inicial de configuración
+     * @param requests    Secuencia de solicitudes
+     * @return Resultado con costo total y pasos
+     */
     public static MTFResult executeMTF(List<Integer> initialList, List<Integer> requests) {
         List<Integer> currentList = new ArrayList<>(initialList);
         int totalCost = 0;
@@ -66,6 +72,13 @@ public class MTFAlgorithm {
         return new MTFResult(currentList, totalCost, steps);
     }
 
+    /**
+     * Implementa el algoritmo IMTF (Improved Move to Front)
+     * 
+     * @param initialList Lista inicial de configuración
+     * @param requests    Secuencia de solicitudes
+     * @return Resultado con costo total y pasos
+     */
     public static MTFResult executeIMTF(List<Integer> initialList, List<Integer> requests) {
         List<Integer> currentList = new ArrayList<>(initialList);
         int totalCost = 0;
@@ -109,6 +122,9 @@ public class MTFAlgorithm {
         return new MTFResult(currentList, totalCost, steps);
     }
 
+    /**
+     * Determina si un elemento debe moverse al frente según la regla IMTF
+     */
     private static boolean shouldMoveToFrontIMTF(List<Integer> requests, int currentIndex, int element, int position) {
         // Buscar en los proximos (position - 1) elementos
         int lookAheadCount = position; // position es 0-indexado, necesitamos position elementos hacia adelante
@@ -123,6 +139,9 @@ public class MTFAlgorithm {
         return found > 0; // Mover si aparece al menos una vez en el look-ahead
     }
 
+    /**
+     * Encuentra la secuencia que produce el mínimo costo
+     */
     public static void findBestCase() {
         List<Integer> initialList = Arrays.asList(0, 1, 2, 3, 4);
 
@@ -139,6 +158,9 @@ public class MTFAlgorithm {
                 "Esta secuencia produce el mínimo costo porque siempre accede al elemento en la primera posición.\n");
     }
 
+    /**
+     * Encuentra la secuencia que produce el maximo costo
+     */
     public static void findWorstCase() {
         List<Integer> initialList = Arrays.asList(0, 1, 2, 3, 4);
 
@@ -155,6 +177,9 @@ public class MTFAlgorithm {
                 "Esta secuencia produce el maximo costo porque accede a elementos en orden inverso,\ncausando que cada elemento se mueva al frente y los demás se desplacen.\n");
     }
 
+    /**
+     * Analiza patrones en secuencias repetitivas
+     */
     public static void analyzeRepeatedSequences() {
         List<Integer> initialList = Arrays.asList(0, 1, 2, 3, 4);
 
@@ -195,6 +220,9 @@ public class MTFAlgorithm {
         return list.toString().replaceAll("[\\[\\]]", "");
     }
 
+    /**
+     * Método principal que ejecuta todos los casos del proyecto
+     */
     public static void main(String[] args) {
         System.out.println("PROYECTO 3 - ALGORITMO MTF (MOVE TO FRONT)");
         System.out.println("==========================================\n");
